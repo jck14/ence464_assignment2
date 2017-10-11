@@ -1,0 +1,4 @@
+/home/jkjoka/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jkjoka/CLionProjects/jacobianRelax
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug
