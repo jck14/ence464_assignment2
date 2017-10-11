@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug"/>
+				<Option working_dir="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug"/>
+				<Option working_dir="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug"/>
+				<Option working_dir="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="jacobianRelax">
-				<Option output="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/jacobianRelax" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug"/>
+				<Option output="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/jacobianRelax" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,15 +55,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 jacobianRelax"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 jacobianRelax"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="jacobianRelax/fast">
-				<Option output="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/jacobianRelax" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug"/>
+				<Option output="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/jacobianRelax" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -79,17 +79,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 jacobianRelax/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 jacobianRelax/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/jkjoka/CLionProjects/jacobianRelax/main.cpp">
+		<Unit filename="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/main.cpp">
 			<Option target="jacobianRelax"/>
 		</Unit>
-		<Unit filename="/home/jkjoka/CLionProjects/jacobianRelax/CMakeLists.txt">
+		<Unit filename="/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

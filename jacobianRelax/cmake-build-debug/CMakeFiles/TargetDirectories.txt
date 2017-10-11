@@ -1,3 +1,3 @@
-/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles/jacobianRelax.dir
+/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles/jacobianRelax.dir

@@ -54,10 +54,10 @@ RM = /home/jkjoka/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jkjoka/CLionProjects/jacobianRelax
+CMAKE_SOURCE_DIR = /home/jkjoka/ence464/ence464_assignment2/jacobianRelax
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug
+CMAKE_BINARY_DIR = /home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug
 
 #=============================================================================
 # Target rules for target CMakeFiles/jacobianRelax.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug
 CMakeFiles/jacobianRelax.dir/all:
 	$(MAKE) -f CMakeFiles/jacobianRelax.dir/build.make CMakeFiles/jacobianRelax.dir/depend
 	$(MAKE) -f CMakeFiles/jacobianRelax.dir/build.make CMakeFiles/jacobianRelax.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target jacobianRelax"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target jacobianRelax"
 .PHONY : CMakeFiles/jacobianRelax.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/jacobianRelax.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/jacobianRelax.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/jacobianRelax.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jkjoka/CLionProjects/jacobianRelax/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jkjoka/ence464/ence464_assignment2/jacobianRelax/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/jacobianRelax.dir/rule
 
 # Convenience name for target.
