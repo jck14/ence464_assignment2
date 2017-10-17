@@ -9,10 +9,8 @@
 /home/jkjoka/ence464/ence464_assignment2/jacobianRelax/main.cpp
 iostream
 -
-vector
+stdio.h
 -
-thread
--
-math.h
+pthread.h
 -
 
