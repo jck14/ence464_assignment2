@@ -3,14 +3,12 @@
 #include <pthread.h>
 
 
-const int LENGTH_OF_MATRIX = 11;
+const int LENGTH_OF_MATRIX = 7;
 const int CENTER_OF_MATRIX = (LENGTH_OF_MATRIX -1)/2;
 
 struct thread_data{
-    float ***array;
     int start_index;
     int end_index;
-    float ***temp_array;
 };
 
 // Create 3D array
@@ -32,6 +30,9 @@ float*** create_3D_array(int n){
 
     return array;
 }
+
+float*** tempArray;
+float*** dataArray;
 
 // Delete 3D array
 void delete_3D_array(float ***array, int n){
@@ -62,16 +63,22 @@ void print_array(float ***array, int n){
 
 void* jacobianIt(void* arg){
     struct thread_data *arg_struct = (struct thread_data*) arg;
+    float f = 0.0;
     for (int Row = 1; Row < LENGTH_OF_MATRIX - 1; Row++) {
         for (int Col = 1; Col < LENGTH_OF_MATRIX - 1; Col++) {
             for (int Height = arg_struct->start_index; Height < arg_struct->end_index - 1; Height++) {
+                if(Row == CENTER_OF_MATRIX && Col == CENTER_OF_MATRIX && Height == CENTER_OF_MATRIX){
+                    f = 1.0;
+                }else{
+                    f = 0.0;
+                }
                 // Compute algorithm and store value in temp array
-                arg_struct->temp_array[Row][Col][Height] = (arg_struct->array[Row + 1][Col][Height] +
-                        arg_struct->array[Row - 1][Col][Height] +
-                        arg_struct->array[Row][Col + 1][Height] +
-                        arg_struct->array[Row][Col - 1][Height] +
-                        arg_struct->array[Row][Col][Height + 1] +
-                        arg_struct->array[Row][Col][Height - 1])/6;
+                tempArray[Row][Col][Height] = (dataArray[Row + 1][Col][Height] +
+                        dataArray[Row - 1][Col][Height] +
+                        dataArray[Row][Col + 1][Height] +
+                        dataArray[Row][Col - 1][Height] +
+                        dataArray[Row][Col][Height + 1] +
+                        dataArray[Row][Col][Height - 1]-f)/6;
             }
         }
     }
@@ -98,8 +105,8 @@ int main(int argc, char **argv) {
     }
 
     // Create 3D array with point change in center
-    float*** dataArray = create_3D_array(LENGTH_OF_MATRIX);
-    float*** tempArray = create_3D_array(LENGTH_OF_MATRIX);
+    dataArray = create_3D_array(LENGTH_OF_MATRIX);
+    tempArray = create_3D_array(LENGTH_OF_MATRIX);
     dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX] = 1;
 
     // Create list of thread data, 1 entry for each thread
@@ -110,21 +117,19 @@ int main(int argc, char **argv) {
         int sliced_index_start = 1;
         int sliced_index_end;
         int array_slice_len = len_array / num_threads + len_array % num_threads / num_threads + 1;
-        printf("array_slice_len = %d\n", array_slice_len);
+//        printf("array_slice_len = %d\n", array_slice_len);
 
         pthread_t tid[num_threads];
         for (int i = 0; i < num_threads; i++) {
 
             // Calculate data for threads
-            args[i].array = dataArray;
-            args[i].temp_array = tempArray;
             sliced_index_end = sliced_index_start + array_slice_len;
             if (sliced_index_end > len_array) {
                 sliced_index_end = len_array;
             }
 
-            printf("Thread %d array_slice_start = %d\n", i, sliced_index_start);
-            printf("Thread %d array_slice_end = %d\n", i, sliced_index_end);
+//            printf("Thread %d array_slice_start = %d\n", i, sliced_index_start);
+//            printf("Thread %d array_slice_end = %d\n", i, sliced_index_end);
 
             args[i].start_index = sliced_index_start;
             args[i].end_index = sliced_index_end;
@@ -139,17 +144,19 @@ int main(int argc, char **argv) {
         }
 
 
-        //TODO: Could do other thing here as main thread has to wait for other threads!!
+        // TODO: Could do other thing here as main thread has to wait for other threads!!
 
-        //Wait until thread is done
+        // Wait until thread is done
         for (int i = 0; i < num_threads; i++) {
             pthread_join(tid[i], nullptr);
-            print_array(args[i].temp_array, LENGTH_OF_MATRIX);
         }
 
-        //TODO: Need to join each threads temp arrays or make temp array a
-            //TODO: Could make data_array and temp_array global and then change thread_data struct to just index values.
+        // Set the answers to be used next iteration
+        dataArray = tempArray;
+
     }
+
+    print_array(dataArray, LENGTH_OF_MATRIX);
 
     return EXIT_SUCCESS;
 }
