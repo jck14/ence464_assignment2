@@ -10,7 +10,7 @@ struct thread_data{
     float ***array;
     int start_index;
     int end_index;
-    float answer;
+    float ***temp_array;
 };
 
 // Create 3D array
@@ -62,15 +62,18 @@ void print_array(float ***array, int n){
 
 void* jacobianIt(void* arg){
     struct thread_data *arg_struct = (struct thread_data*) arg;
-    long sum = 0;
     for (int Row = 1; Row < LENGTH_OF_MATRIX - 1; Row++) {
         for (int Col = 1; Col < LENGTH_OF_MATRIX - 1; Col++) {
             for (int Height = arg_struct->start_index; Height < arg_struct->end_index - 1; Height++) {
-                sum += arg_struct->array[Row][Col][Height];
+                arg_struct->temp_array[Row][Col][Height] = 1/6*(arg_struct->array[Row + 1][Col][Height] +
+                        arg_struct->array[Row - 1][Col][Height] +
+                        arg_struct->array[Row][Col + 1][Height] +
+                        arg_struct->array[Row][Col - 1][Height] +
+                        arg_struct->array[Row][Col][Height + 1] +
+                        arg_struct->array[Row][Col][Height - 1]);
             }
         }
     }
-    arg_struct->answer = sum;
     pthread_exit(nullptr);
 }
 
@@ -93,10 +96,10 @@ int main(int argc, char **argv) {
         exit(-1);
     }
 
-    // Create and display 3D array with point change in center
+    // Create 3D array with point change in center
     float*** dataArray = create_3D_array(LENGTH_OF_MATRIX);
+    float*** tempArray = create_3D_array(LENGTH_OF_MATRIX);
     dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX] = 1;
-    print_array(dataArray,LENGTH_OF_MATRIX);
 
     // Create list of thread data, 1 entry for each thread
     struct thread_data args[num_threads];
@@ -111,6 +114,7 @@ int main(int argc, char **argv) {
 
         // Calculate data for threads
         args[i].array = dataArray;
+        args[i].temp_array = tempArray;
         sliced_index_end = sliced_index_start + array_slice_len;
         if(sliced_index_end > len_array){
             sliced_index_end = len_array;
@@ -132,12 +136,12 @@ int main(int argc, char **argv) {
     }
 
 
-    //TODO: Could do other thing here!!
+    //TODO: Could do other thing here as main thread has to wait for other threads!!
 
     //Wait until thread is done
     for(int i = 0; i < num_threads; i++) {
         pthread_join(tid[i], nullptr);
-        printf("%f\n",args[i].answer);
+        print_array(args[i].temp_array, LENGTH_OF_MATRIX);
     }
 
     return EXIT_SUCCESS;
