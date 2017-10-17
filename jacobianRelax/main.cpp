@@ -3,8 +3,8 @@
 #include <pthread.h>
 
 
-const int LENGTH_OF_MATRIX = 7;
-const int CENTER_OF_MATRIX = (LENGTH_OF_MATRIX -1)/2;
+int LENGTH_OF_MATRIX;
+int CENTER_OF_MATRIX;
 
 struct thread_data{
     int start_index;
@@ -66,7 +66,7 @@ void* jacobianIt(void* arg){
     float f = 0.0;
     for (int Row = 1; Row < LENGTH_OF_MATRIX - 1; Row++) {
         for (int Col = 1; Col < LENGTH_OF_MATRIX - 1; Col++) {
-            for (int Height = arg_struct->start_index; Height < arg_struct->end_index - 1; Height++) {
+            for (int Height = arg_struct->start_index; Height < (arg_struct->end_index); Height += 1) {
                 if(Row == CENTER_OF_MATRIX && Col == CENTER_OF_MATRIX && Height == CENTER_OF_MATRIX){
                     f = 1.0;
                 }else{
@@ -96,10 +96,11 @@ int main(int argc, char **argv) {
 
     // Get number of threads and cube size
     int num_threads = atoi(argv[1]);
-    int len_array = atoi(argv[2]);
+    LENGTH_OF_MATRIX = atoi(argv[2]);
+    CENTER_OF_MATRIX = (LENGTH_OF_MATRIX-1)/2;
 
     // Check if len_array is odd
-    if(len_array%2 != 1){
+    if(LENGTH_OF_MATRIX%2 != 1){
         printf("argv[2] must be odd\n");
         exit(-1);
     }
@@ -116,7 +117,7 @@ int main(int argc, char **argv) {
     for(int j = 0; j < 50; j++) {
         int sliced_index_start = 1;
         int sliced_index_end;
-        int array_slice_len = len_array / num_threads + len_array % num_threads / num_threads + 1;
+        int array_slice_len = LENGTH_OF_MATRIX / num_threads + LENGTH_OF_MATRIX % num_threads / num_threads + 1;
 //        printf("array_slice_len = %d\n", array_slice_len);
 
         pthread_t tid[num_threads];
@@ -124,8 +125,8 @@ int main(int argc, char **argv) {
 
             // Calculate data for threads
             sliced_index_end = sliced_index_start + array_slice_len;
-            if (sliced_index_end > len_array) {
-                sliced_index_end = len_array;
+            if (sliced_index_end > LENGTH_OF_MATRIX) {
+                sliced_index_end = LENGTH_OF_MATRIX;
             }
 
 //            printf("Thread %d array_slice_start = %d\n", i, sliced_index_start);
