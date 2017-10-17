@@ -105,7 +105,8 @@ int main(int argc, char **argv) {
     // Create list of thread data, 1 entry for each thread
     struct thread_data args[num_threads];
 
-    for(int i = 0; i < 50; i++) {
+    // Iteration loop
+    for(int j = 0; j < 50; j++) {
         int sliced_index_start = 1;
         int sliced_index_end;
         int array_slice_len = len_array / num_threads + len_array % num_threads / num_threads + 1;
@@ -145,6 +146,9 @@ int main(int argc, char **argv) {
             pthread_join(tid[i], nullptr);
             print_array(args[i].temp_array, LENGTH_OF_MATRIX);
         }
+
+        //TODO: Need to join each threads temp arrays or make temp array a
+            //TODO: Could make data_array and temp_array global and then change thread_data struct to just index values.
     }
 
     return EXIT_SUCCESS;
