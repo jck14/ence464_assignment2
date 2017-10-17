@@ -65,12 +65,13 @@ void* jacobianIt(void* arg){
     for (int Row = 1; Row < LENGTH_OF_MATRIX - 1; Row++) {
         for (int Col = 1; Col < LENGTH_OF_MATRIX - 1; Col++) {
             for (int Height = arg_struct->start_index; Height < arg_struct->end_index - 1; Height++) {
-                arg_struct->temp_array[Row][Col][Height] = 1/6*(arg_struct->array[Row + 1][Col][Height] +
+                // Compute algorithm and store value in temp array
+                arg_struct->temp_array[Row][Col][Height] = (arg_struct->array[Row + 1][Col][Height] +
                         arg_struct->array[Row - 1][Col][Height] +
                         arg_struct->array[Row][Col + 1][Height] +
                         arg_struct->array[Row][Col - 1][Height] +
                         arg_struct->array[Row][Col][Height + 1] +
-                        arg_struct->array[Row][Col][Height - 1]);
+                        arg_struct->array[Row][Col][Height - 1])/6;
             }
         }
     }
@@ -104,44 +105,46 @@ int main(int argc, char **argv) {
     // Create list of thread data, 1 entry for each thread
     struct thread_data args[num_threads];
 
-    int sliced_index_start = 1;
-    int sliced_index_end;
-    int array_slice_len = len_array/num_threads + len_array%num_threads/num_threads + 1;
-    printf("array_slice_len = %d\n", array_slice_len);
+    for(int i = 0; i < 50; i++) {
+        int sliced_index_start = 1;
+        int sliced_index_end;
+        int array_slice_len = len_array / num_threads + len_array % num_threads / num_threads + 1;
+        printf("array_slice_len = %d\n", array_slice_len);
 
-    pthread_t tid[num_threads];
-    for(int i = 0; i < num_threads; i++){
+        pthread_t tid[num_threads];
+        for (int i = 0; i < num_threads; i++) {
 
-        // Calculate data for threads
-        args[i].array = dataArray;
-        args[i].temp_array = tempArray;
-        sliced_index_end = sliced_index_start + array_slice_len;
-        if(sliced_index_end > len_array){
-            sliced_index_end = len_array;
+            // Calculate data for threads
+            args[i].array = dataArray;
+            args[i].temp_array = tempArray;
+            sliced_index_end = sliced_index_start + array_slice_len;
+            if (sliced_index_end > len_array) {
+                sliced_index_end = len_array;
+            }
+
+            printf("Thread %d array_slice_start = %d\n", i, sliced_index_start);
+            printf("Thread %d array_slice_end = %d\n", i, sliced_index_end);
+
+            args[i].start_index = sliced_index_start;
+            args[i].end_index = sliced_index_end;
+
+            pthread_attr_t attr;
+            pthread_attr_init(&attr);
+            pthread_create(&tid[i], &attr, jacobianIt, &args[i]);
+
+            // Set endpoint of last thread to start point of next thread
+            sliced_index_start = sliced_index_end;
+
         }
 
-        printf("Thread %d array_slice_start = %d\n", i, sliced_index_start);
-        printf("Thread %d array_slice_end = %d\n", i, sliced_index_end);
 
-        args[i].start_index = sliced_index_start;
-        args[i].end_index = sliced_index_end;
+        //TODO: Could do other thing here as main thread has to wait for other threads!!
 
-        pthread_attr_t attr;
-        pthread_attr_init(&attr);
-        pthread_create(&tid[i], &attr, jacobianIt, &args[i]);
-
-        // Set endpoint of last thread to start point of next thread
-        sliced_index_start = sliced_index_end;
-
-    }
-
-
-    //TODO: Could do other thing here as main thread has to wait for other threads!!
-
-    //Wait until thread is done
-    for(int i = 0; i < num_threads; i++) {
-        pthread_join(tid[i], nullptr);
-        print_array(args[i].temp_array, LENGTH_OF_MATRIX);
+        //Wait until thread is done
+        for (int i = 0; i < num_threads; i++) {
+            pthread_join(tid[i], nullptr);
+            print_array(args[i].temp_array, LENGTH_OF_MATRIX);
+        }
     }
 
     return EXIT_SUCCESS;
