@@ -88,7 +88,7 @@ void* jacobianIt(void* arg){
 int main(int argc, char **argv) {
 
     //Check if input is valid
-    if(argc > 3){
+    if(argc > 4){
         printf("Usage: %s <num> <num>\n", argv[0]);
         exit(-1);
     }
@@ -96,6 +96,7 @@ int main(int argc, char **argv) {
     // Get number of threads and cube size
     int num_threads = atoi(argv[1]);
     LENGTH_OF_MATRIX = atoi(argv[2]);
+    int num_iterations = atoi(argv[3]);
     CENTER_OF_MATRIX = (LENGTH_OF_MATRIX-1)/2;
 
     // Check if len_array is odd
@@ -113,7 +114,7 @@ int main(int argc, char **argv) {
     struct thread_data args[num_threads];
 
     // Iteration loop
-    for(int j = 0; j < 50; j++) {
+    for(int j = 0; j < num_iterations; j++) {
         int sliced_index_start = 1;
         int sliced_index_end;
         int array_slice_len = LENGTH_OF_MATRIX / num_threads + LENGTH_OF_MATRIX % num_threads / num_threads + 1;
@@ -152,11 +153,15 @@ int main(int argc, char **argv) {
         }
 
         // Set the answers to be used next iteration
+        delete_3D_array(dataArray,LENGTH_OF_MATRIX);
         dataArray = tempArray;
+
+        tempArray = create_3D_array(LENGTH_OF_MATRIX);
 
     }
 
-    print_array(dataArray, LENGTH_OF_MATRIX);
+//    print_array(dataArray, LENGTH_OF_MATRIX);
+    printf("%f", dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX]);
 
     return EXIT_SUCCESS;
 }
