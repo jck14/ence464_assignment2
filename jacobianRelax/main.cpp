@@ -110,6 +110,10 @@ int main(int argc, char **argv) {
     tempArray = create_3D_array(LENGTH_OF_MATRIX);
     dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX] = 1;
 
+    clock_t timePassed;
+    double secondsPassed;
+    clock_t startTime = clock(); //Start timer
+
     // Create list of thread data, 1 entry for each thread
     struct thread_data args[num_threads];
 
@@ -160,8 +164,13 @@ int main(int argc, char **argv) {
 
     }
 
+    clock_t endTime = clock(); //Start timer
+    timePassed = endTime - startTime;
+    secondsPassed = timePassed / (double)CLOCKS_PER_SEC;
+
+    std::cout << secondsPassed << "\n";
 //    print_array(dataArray, LENGTH_OF_MATRIX);
-    printf("%f", dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX]);
+    printf("%f\n", dataArray[CENTER_OF_MATRIX][CENTER_OF_MATRIX][CENTER_OF_MATRIX]);
 
     return EXIT_SUCCESS;
 }
