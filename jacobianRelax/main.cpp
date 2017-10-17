@@ -63,22 +63,21 @@ void print_array(float ***array, int n){
 
 void* jacobianIt(void* arg){
     struct thread_data *arg_struct = (struct thread_data*) arg;
-    float f = 0.0;
     for (int Row = 1; Row < LENGTH_OF_MATRIX - 1; Row++) {
         for (int Col = 1; Col < LENGTH_OF_MATRIX - 1; Col++) {
             for (int Height = arg_struct->start_index; Height < (arg_struct->end_index); Height += 1) {
                 if(Row == CENTER_OF_MATRIX && Col == CENTER_OF_MATRIX && Height == CENTER_OF_MATRIX){
-                    f = 1.0;
+                    tempArray[Row][Col][Height] = 1;
                 }else{
-                    f = 0.0;
+                    // Compute algorithm and store value in temp array
+                    tempArray[Row][Col][Height] = (dataArray[Row + 1][Col][Height] +
+                                                   dataArray[Row - 1][Col][Height] +
+                                                   dataArray[Row][Col + 1][Height] +
+                                                   dataArray[Row][Col - 1][Height] +
+                                                   dataArray[Row][Col][Height + 1] +
+                                                   dataArray[Row][Col][Height - 1] )/6;
                 }
-                // Compute algorithm and store value in temp array
-                tempArray[Row][Col][Height] = (dataArray[Row + 1][Col][Height] +
-                        dataArray[Row - 1][Col][Height] +
-                        dataArray[Row][Col + 1][Height] +
-                        dataArray[Row][Col - 1][Height] +
-                        dataArray[Row][Col][Height + 1] +
-                        dataArray[Row][Col][Height - 1]-f)/6;
+
             }
         }
     }
